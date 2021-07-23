@@ -5,7 +5,8 @@
   "scripts": {
     "prebuild": "npm i",
     "build": "tsc",
-    "start": "node dist/start.js"
+    "start": "node dist/start.js",
+    "clean": "rm -rf node_modules && rm -rf dist && rm package-lock.json && rm -rf data"
   },
   "devDependencies": {
     "@types/adm-zip": "^0.4.34",

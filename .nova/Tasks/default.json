@@ -6,14 +6,13 @@
     },
     "clean" : {
       "enabled" : true,
-      "script" : "#!\/bin\/sh\nrm -rf node_modules\nrm -rf dist\nrm package-lock.json"
+      "script" : "#!\/bin\/sh\nnpm run clean"
     },
     "run" : {
       "enabled" : true,
       "script" : "#!\/bin\/sh\nnpm start"
     }
   },
-  "buildBeforeRunning" : true,
   "identifier" : "718743C9-BE3F-464F-B3EA-5BFB2BD6C0B1",
-  "openLogOnRun" : "start"
+  "openLogOnRun" : "fail"
 }
