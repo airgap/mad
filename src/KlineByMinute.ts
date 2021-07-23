@@ -13,18 +13,20 @@ Taker buy base asset volume
 Taker buy quote asset volume
 Ignore`;
 
-import {access, mkdir, readdir, readFile} from 'fs/promises';
+import {mkdir, readdir} from 'fs/promises';
 
 import {loadCsvs} from "./loadCsvs";
 import { existsSync } from "fs";
 
-class KlineByMinute {
+export class KlineByMinute {
+    
+    ready: boolean = false;
 
     tickers: {[key: string]: string} = {};
 
     init = async () => {
         console.log('Initializing...');
-        if(!await existsSync('data'))
+        if(!existsSync('data'))
             await mkdir('data');
         const files = await readdir('data');
         if(!files?.length) {
@@ -33,6 +35,7 @@ class KlineByMinute {
         }
 
         this.tickers = await loadCsvs();
+        this.ready = true;
     }
 
     minuteExists = (unixMinute: number) =>
@@ -42,10 +45,10 @@ class KlineByMinute {
         this.tickers[unixMinute];
 }
 
-(async() => {
-    const kbm = new KlineByMinute();
-    console.log('Loading');
-    await kbm.init();
-    console.log('Loaded!');
-    console.log(kbm.getKlineForMinute(27084939))
-})();
+// (async() => {
+//     const kbm = new KlineByMinute();
+//     console.log('Loading');
+//     await kbm.init();
+//     console.log('Loaded!');
+//     console.log(kbm.getKlineForMinute(27084939))
+// })();

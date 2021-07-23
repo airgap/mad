@@ -1,0 +1,7 @@
+{
+  "apexskier.typescript.config.userPreferences.includeAutomaticOptionalChainCompletions" : true,
+  "apexskier.typescript.config.userPreferences.includeCompletionsForImportStatements" : true,
+  "apexskier.typescript.config.userPreferences.includeCompletionsForModuleExports" : true,
+  "apexskier.typescript.config.userPreferences.includeCompletionsWithInsertText" : true,
+  "apexskier.typescript.config.userPreferences.includeCompletionsWithSnippetText" : true
+}
