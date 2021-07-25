@@ -27,20 +27,24 @@ Ignore | 0
 
 ## Scripts
 
-### Build
-Downloads NPM modules and compiles typescript
-```bash
-npm run build
-```
+### Setup
+KBM doesn't need built. Just [install deno](https://deno.land/#installation).
 
 ### Start
 Cache Kline data and run server
+
+##### Instant
 ```bash
-npm start
+curl https://cdn.jsdelivr.net/gh/Linky-Studio/kbm/start-remote.sh | sh
+```
+
+##### When cloned
+```bash
+./start.sh
 ```
 
 ### Clean
-Removes node_modules, package_lock.json, dist, and data
+Removes cached data
 ```bash
-npm run clean
+./clean.sh
 ```

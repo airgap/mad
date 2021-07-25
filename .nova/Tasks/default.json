@@ -1,16 +1,12 @@
 {
   "actions" : {
-    "build" : {
-      "enabled" : true,
-      "script" : "#!\/bin\/sh\nnpm run build"
-    },
     "clean" : {
       "enabled" : true,
-      "script" : "#!\/bin\/sh\nnpm run clean"
+      "script" : "#!\/bin\/sh\n.\/clean.sh"
     },
     "run" : {
       "enabled" : true,
-      "script" : "#!\/bin\/sh\nnpm start"
+      "script" : "#!\/bin\/sh\n.\/start.sh"
     }
   },
   "identifier" : "718743C9-BE3F-464F-B3EA-5BFB2BD6C0B1",
