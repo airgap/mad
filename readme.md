@@ -27,11 +27,18 @@ Ignore | 0
 
 ## Scripts
 
-### Build
-KBM doesn't need built
+### Setup
+KBM doesn't need built. Just [install deno](https://deno.land/#installation).
 
 ### Start
 Cache Kline data and run server
+
+##### Instant
+```bash
+curl https://cdn.jsdelivr.net/gh/Linky-Studio/kbm/start-remote.sh | sh
+```
+
+##### When cloned
 ```bash
 ./start.sh
 ```
