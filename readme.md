@@ -28,19 +28,16 @@ Ignore | 0
 ## Scripts
 
 ### Build
-Downloads NPM modules and compiles typescript
-```bash
-npm run build
-```
+KBM doesn't need built
 
 ### Start
 Cache Kline data and run server
 ```bash
-npm start
+./start.sh
 ```
 
 ### Clean
-Removes node_modules, package_lock.json, dist, and data
+Removes cached data
 ```bash
-npm run clean
+./clean.sh
 ```
