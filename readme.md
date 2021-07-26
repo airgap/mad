@@ -46,7 +46,6 @@ curl -L https://muzz.in/deno | sh -s start-remote
 
 # Load Etherium, force reload Bitcoin, run on port 1234
 curl -L https://muzz.in/deno | sh -s start ETHUSDT,BTCUSDT$ 1234
-#
 ```
 
 ##### When cloned
