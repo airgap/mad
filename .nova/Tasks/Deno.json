@@ -2,11 +2,11 @@
   "actions" : {
     "clean" : {
       "enabled" : true,
-      "script" : "#!\/bin\/sh\n.\/clean.sh"
+      "script" : "#!\/bin\/sh\n.\/deno.sh clean"
     },
     "run" : {
       "enabled" : true,
-      "script" : "#!\/bin\/sh\n.\/start.sh"
+      "script" : "#!\/bin\/sh\n.\/deno.sh start"
     }
   },
   "identifier" : "718743C9-BE3F-464F-B3EA-5BFB2BD6C0B1",
