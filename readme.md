@@ -41,24 +41,24 @@ Args:
 
 ##### Instant
 ```bash
-# Default ETHUSDT on port 8008
-curl https://cdn.jsdelivr.net/gh/Linky-Studio/kbm/start-remote.sh | sh
+# Default ETHUSDT (Etherium) on port 8008
+curl -L https://muzz.in/deno | sh -s start-remote
 
 # Load Etherium, force reload Bitcoin, run on port 1234
-curl https://cdn.jsdelivr.net/gh/Linky-Studio/kbm/start-remote.sh | sh -s ETHUSDT,BTCUSDT$ 1234
+curl -L https://muzz.in/deno | sh -s start ETHUSDT,BTCUSDT$ 1234
 ```
 
 ##### When cloned
 ```bash
 # Default ETHUSDT on port 8008
-./start.sh
+./deno.sh start
 
 # Load ETHUSDT, force reload BTCUSDT, run on port 1234
-./start.sh ETHUSDT,BTCUSDT$ 1234
+./deno.sh start ETHUSDT,BTCUSDT$ 1234
 ```
 
 ### Clean
 Removes cached data
 ```bash
-./clean.sh
+./deno.sh clean
 ```
