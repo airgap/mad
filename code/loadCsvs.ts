@@ -1,7 +1,8 @@
-export const loadCsvs = async () => {
+export const loadCsvs = async (symbol: string) => {
   console.log("Loading historical data");
+  const path = `data/${symbol}/`;
   const tickers: { [key: string]: string } = {};
-  const fileIterator = Deno.readDir("data");
+  const fileIterator = Deno.readDir(path);
   const flist = [];
   for await (const file of fileIterator) {
     flist.push(file);
@@ -9,7 +10,7 @@ export const loadCsvs = async () => {
   let loaded = 0;
   const files = await Promise.all(
     flist.map(async (fname: Deno.DirEntry, f: number) => {
-      const file = await Deno.readTextFile("data/" + fname.name);
+      const file = await Deno.readTextFile(`${path}/${fname.name}`);
       file.trim().split("\n")
         .forEach((line: string) =>
           tickers[parseInt(line.split(",")[0]) / 60000] = line
@@ -20,7 +21,7 @@ export const loadCsvs = async () => {
         loaded,
         "of",
         flist.length,
-        "files",
+        symbol,
         ":",
         Math.round((loaded) / flist.length * 100),
         "% complete",

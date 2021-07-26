@@ -31,16 +31,31 @@ Ignore | 0
 KBM doesn't need built. Just [install deno](https://deno.land/#installation).
 
 ### Start
-Cache Kline data and run server
+Cache Kline data and run server.
+Args:
+
+1. Comma separated symbol list; append $ to symbol to clear data and recache
+	* Defaults to ETHUSDT
+2. Port
+	* Defaults to 8008
 
 ##### Instant
 ```bash
+# Default ETHUSDT on port 8008
 curl https://cdn.jsdelivr.net/gh/Linky-Studio/kbm/start-remote.sh | sh
+
+# Load Etherium, force reload Bitcoin, run on port 1234
+curl https://cdn.jsdelivr.net/gh/Linky-Studio/kbm/start-remote.sh | sh -s ETHUSDT,BTCUSDT$ 1234
+#
 ```
 
 ##### When cloned
 ```bash
+# Default ETHUSDT on port 8008
 ./start.sh
+
+# Load ETHUSDT, force reload BTCUSDT, run on port 1234
+./start.sh ETHUSDT,BTCUSDT$ 1234
 ```
 
 ### Clean

@@ -1,4 +1,8 @@
-import { ensureDir, exists } from "https://deno.land/std@0.102.0/fs/mod.ts";
+import {
+  emptyDir,
+  ensureDir,
+  exists,
+} from "https://deno.land/std@0.102.0/fs/mod.ts";
 
 import { download } from "./download.ts";
 
@@ -20,30 +24,45 @@ import { loadCsvs } from "./loadCsvs.ts";
 export class KlineByMinute {
   ready: boolean = false;
 
-  tickers: { [key: string]: string } = {};
+  tickers: { [symbol: string]: { [minute: string]: string } } = {};
 
-  init = async () => {
+  init = async (symbolCommands: string[]) => {
     console.log("Initializing...");
-    await ensureDir("data");
-    const files = Deno.readDirSync("data");
-    let empty = true;
-    for (const file of files) {
-      empty = false;
-      break;
-    }
+    for (const command of symbolCommands) {
+      console.log("COMMAND", command);
+      const [, symbol, refresh] = command.match(/^([A-Z]+)(\$)?$/) ?? [];
+      if (!symbol) {
+        throw new Error("Invalid command");
+      }
+      const path = "data/" + symbol;
+      await ensureDir(path);
+      const files = Deno.readDirSync(path);
+      let empty = true;
+      for (const file of files) {
+        empty = false;
+        break;
+      }
 
-    if (empty) {
-      console.log("Historical data not found locally.");
-      await download();
-    }
+      if (empty) {
+        console.log("Historical data not found locally.");
+      }
+      if (refresh) {
+        console.log("Refreshing data for", symbol);
+        emptyDir(path);
+      }
+      if (empty || refresh) {
+        await download(symbol);
+      }
 
-    this.tickers = await loadCsvs();
+      this.tickers[symbol] = await loadCsvs(symbol);
+    }
     this.ready = true;
   };
 
   minuteExists = (unixMinute: number) => !!this.tickers[unixMinute];
 
-  getKlineForMinute = (unixMinute: number) => this.tickers[unixMinute];
+  getKlineForMinute = (symbol: string, unixMinute: number) =>
+    this.tickers[symbol]?.[unixMinute];
 }
 
 // (async() => {
