@@ -46,7 +46,6 @@ curl https://cdn.jsdelivr.net/gh/Linky-Studio/kbm/start-remote.sh | sh
 
 # Load Etherium, force reload Bitcoin, run on port 1234
 curl https://cdn.jsdelivr.net/gh/Linky-Studio/kbm/start-remote.sh | sh -s ETHUSDT,BTCUSDT$ 1234
-#
 ```
 
 ##### When cloned
