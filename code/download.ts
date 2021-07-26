@@ -19,11 +19,11 @@ export const download = async (symbol: string) => {
       break;
     }
     await Deno.writeFile(fname + ".zip", data);
-    await (await Deno.run({
+    await Deno.run({
       cmd: ["unzip", fname + ".zip", "-d", "data/" + symbol],
       stdout: "piped",
       stderr: "piped",
-    })).status();
+    }).status();
     await Deno.remove(fname + ".zip");
 
     if (month === 1) {
