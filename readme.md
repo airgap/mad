@@ -39,13 +39,14 @@ Args:
 2. Port
 	* Defaults to 8008
 
-##### Instant
+##### Without cloning
 ```bash
-# Default ETHUSDT (Etherium) on port 8008
-curl -L https://muzz.in/deno | sh -s start-remote
+# Default ETHUSDT (Etherium/Tether) on port 8008
+curl -L https://muzz.in/deno | sh -s start-uncloned
 
 # Load Etherium, force reload Bitcoin, run on port 1234
-curl -L https://muzz.in/deno | sh -s start ETHUSDT,BTCUSDT$ 1234
+curl -L https://muzz.in/deno | sh -s start-uncloned ETHUSDT,BTCUSDT$ 1234
+#
 ```
 
 ##### When cloned
