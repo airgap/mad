@@ -1,8 +1,4 @@
-import {
-  emptyDir,
-  ensureDir,
-  exists,
-} from "https://deno.land/std@0.102.0/fs/mod.ts";
+import { emptyDir, ensureDir } from "https://deno.land/std@0.102.0/fs/mod.ts";
 
 import { download } from "./download.ts";
 
@@ -22,7 +18,7 @@ Ignore`;
 import { loadCsvs } from "./loadCsvs.ts";
 
 export class KlineByMinute {
-  ready: boolean = false;
+  ready = false;
 
   tickers: { [symbol: string]: { [minute: string]: string } } = {};
 
@@ -38,7 +34,7 @@ export class KlineByMinute {
       await ensureDir(path);
       const files = Deno.readDirSync(path);
       let empty = true;
-      for (const file of files) {
+      for (const _file of files) {
         empty = false;
         break;
       }
@@ -64,11 +60,3 @@ export class KlineByMinute {
   getKlineForMinute = (symbol: string, unixMinute: number) =>
     this.tickers[symbol]?.[unixMinute];
 }
-
-// (async() => {
-//     const kbm = new KlineByMinute();
-//     console.log('Loading');
-//     await kbm.init();
-//     console.log('Loaded!');
-//     console.log(kbm.getKlineForMinute(27084939))
-// })();

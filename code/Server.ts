@@ -1,4 +1,7 @@
-import { serve } from "https://deno.land/std@0.102.0/http/server.ts";
+import {
+  serve,
+  ServerRequest,
+} from "https://deno.land/std@0.102.0/http/server.ts";
 
 import { KlineByMinute } from "./KlineByMinute.ts";
 
@@ -9,14 +12,14 @@ export class Server {
   constructor() {
     this.kbm = new KlineByMinute();
   }
-  private listener = (req: any) => {
+  private listener = (req: ServerRequest) => {
     //console.log(req);
     const [, symbol, minute] = req.url.split(/\//g);
     //.match(/^\/([^\/]+)\/([0-9]+)$/);
     if (!minute) {
       req.respond({ status: 200, body: "no minute" });
     }
-    const result = this.kbm.getKlineForMinute(symbol, minute) ??
+    const result = this.kbm.getKlineForMinute(symbol, parseInt(minute)) ??
       "invalid minute";
     console.log(symbol, minute, "-->", result);
     req.respond({ status: 200, body: result });

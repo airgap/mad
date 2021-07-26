@@ -1,4 +1,5 @@
 {
+  "apexskier.typescript.config.userPreferences.allowRenameOfImportPath" : true,
   "apexskier.typescript.config.userPreferences.includeAutomaticOptionalChainCompletions" : true,
   "apexskier.typescript.config.userPreferences.includeCompletionsForImportStatements" : true,
   "apexskier.typescript.config.userPreferences.includeCompletionsForModuleExports" : true,
