@@ -16,19 +16,20 @@ export class Server {
     if (!minute) {
       req.respond({ status: 200, body: "no minute" });
     }
-    const result = this.kbm.getKlineForMinute(minute) ?? "invalid minute";
+    const result = this.kbm.getKlineForMinute(symbol, minute) ??
+      "invalid minute";
     console.log(symbol, minute, "-->", result);
     req.respond({ status: 200, body: result });
   };
-  init = async () => {
+  init = async (symbols: string[]) => {
     if (this.ready) {
       return;
     }
-    await this.kbm.init();
+    await this.kbm.init(symbols);
     this.ready = true;
   };
-  start = async (port = 8008) => {
-    await this.init();
+  start = async (port = 8008, symbols: string[] = ["ETHUSDT"]) => {
+    await this.init(symbols);
     const server = serve({ port });
     console.log("Now serving on port", port);
     for await (const req of server) {
