@@ -3,7 +3,7 @@
 if [ "$1" = "start" ]
 then
 	deno --unstable run --allow-read --allow-write --allow-net --allow-env --allow-run code/start.ts --symbols "$2" --port "$3"
-elif [ "$1" = "online" ]
+elif [ "$1" = "uncloned" ]
 then
 	deno --unstable run --allow-read --allow-write --allow-net --allow-env --allow-run https://cdn.jsdelivr.net/gh/Linky-Studio/kbm/code/start.ts --symbols "$2" --port "$3"
 elif [ "$1" = "clean" ]

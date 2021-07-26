@@ -42,10 +42,10 @@ Args:
 ##### Without cloning
 ```bash
 # Default ETHUSDT (Etherium/Tether) on port 8008
-curl -L https://muzz.in/deno | sh -s online
+curl -L https://muzz.in/deno | sh -s uncloned
 
 # Load Etherium, force reload Bitcoin, run on port 1234
-curl -L https://muzz.in/deno | sh -s online ETHUSDT,BTCUSDT$ 1234
+curl -L https://muzz.in/deno | sh -s uncloned ETHUSDT,BTCUSDT$ 1234
 #
 ```
 
