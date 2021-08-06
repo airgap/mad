@@ -14,7 +14,4 @@ if (!symbols || !symbols[0]) {
   symbols = ["ETHUSDT"];
 }
 console.log("Starting server with", symbols, port);
-serv.start(
-  port,
-  symbols,
-);
+serv.start(port, symbols);
