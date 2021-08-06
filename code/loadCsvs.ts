@@ -8,8 +8,8 @@ export const loadCsvs = async (symbol: string) => {
     flist.push(file);
   }
   let loaded = 0;
-  const files = await Promise.all(
-    flist.map(async (fname: Deno.DirEntry, f: number) => {
+  await Promise.all(
+    flist.map(async (fname: Deno.DirEntry) => {
       const file = await Deno.readTextFile(`${path}/${fname.name}`);
       file.trim().split("\n")
         .forEach((line: string) =>
