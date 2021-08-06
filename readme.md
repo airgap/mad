@@ -10,36 +10,40 @@ Example GET:
 ```
 
 ## Fields
-Field name | Example Value
----|---
-Open time | 1598918520000
-Open | 434.71000000
-High | 435.24000000
-Low | 434.71000000
-Close | 434.86000000
-Volume | 501.72752000
-Close time | 1598918579999
-Quote asset volume | 218241.13816760
-Number of trades | 271
-Taker buy base asset volume | 151.42315000
-Taker buy quote asset volume | 65864.26898090
-Ignore | 0
+
+| Field name                   | Example Value   |
+| ---------------------------- | --------------- |
+| Open time                    | 1598918520000   |
+| Open                         | 434.71000000    |
+| High                         | 435.24000000    |
+| Low                          | 434.71000000    |
+| Close                        | 434.86000000    |
+| Volume                       | 501.72752000    |
+| Close time                   | 1598918579999   |
+| Quote asset volume           | 218241.13816760 |
+| Number of trades             | 271             |
+| Taker buy base asset volume  | 151.42315000    |
+| Taker buy quote asset volume | 65864.26898090  |
+| Ignore                       | 0               |
 
 ## Scripts
 
 ### Setup
+
 KBM doesn't need built. Just [install deno](https://deno.land/#installation).
 
 ### Start
+
 Cache Kline data and run server.
 Args:
 
 1. Comma separated symbol list; append $ to symbol to clear data and recache
-	* Defaults to ETHUSDT
+   - Defaults to ETHUSDT
 2. Port
-	* Defaults to 8008
+   - Defaults to 8008
 
 ##### Without cloning
+
 ```bash
 # Default ETHUSDT (Etherium/Tether) on port 8008
 curl -L https://muzz.in/deno | sh -s uncloned
@@ -49,6 +53,7 @@ curl -L https://muzz.in/deno | sh -s uncloned ETHUSDT,BTCUSDT$ 1234
 ```
 
 ##### When cloned
+
 ```bash
 # Default ETHUSDT on port 8008
 ./deno.sh start
@@ -58,7 +63,9 @@ curl -L https://muzz.in/deno | sh -s uncloned ETHUSDT,BTCUSDT$ 1234
 ```
 
 ### Clean
+
 Removes cached data
+
 ```bash
 ./deno.sh clean
 ```

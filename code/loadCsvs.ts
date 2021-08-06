@@ -11,9 +11,12 @@ export const loadCsvs = async (symbol: string) => {
   const files = await Promise.all(
     flist.map(async (fname: Deno.DirEntry, f: number) => {
       const file = await Deno.readTextFile(`${path}/${fname.name}`);
-      file.trim().split("\n")
-        .forEach((line: string) =>
-          tickers[parseInt(line.split(",")[0]) / 60000] = line
+      file
+        .trim()
+        .split("\n")
+        .forEach(
+          (line: string) =>
+            (tickers[parseInt(line.split(",")[0]) / 60000] = line)
         );
       ++loaded;
       console.log(
@@ -23,10 +26,10 @@ export const loadCsvs = async (symbol: string) => {
         flist.length,
         symbol,
         ":",
-        Math.round((loaded) / flist.length * 100),
-        "% complete",
+        Math.round((loaded / flist.length) * 100),
+        "% complete"
       );
-    }),
+    })
   );
   console.log("Loaded historical data");
   return tickers;
