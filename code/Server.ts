@@ -19,8 +19,8 @@ export class Server {
     if (!minute) {
       req.respond({ status: 200, body: "no minute" });
     }
-    const result = this.kbm.getKlineForMinute(symbol, parseInt(minute)) ??
-      "invalid minute";
+    const result =
+      this.kbm.getKlineForMinute(symbol, parseInt(minute)) ?? "invalid minute";
     console.log(symbol, minute, "-->", result);
     req.respond({ status: 200, body: result });
   };
